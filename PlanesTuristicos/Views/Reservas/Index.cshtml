@@ -1,0 +1,103 @@
+﻿@model IEnumerable<PlanesTuristicos.Models.Reserva>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePlanTuristico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Informacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Municipio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CorreoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefonoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanTuristico)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePlanTuristico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Informacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Municipio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanTuristico.Id_PlanTuristicos)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdReserva">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdReserva">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdReserva">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

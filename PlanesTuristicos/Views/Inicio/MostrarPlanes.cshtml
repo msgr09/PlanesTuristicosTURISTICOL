@@ -1,0 +1,139 @@
+﻿@model PlanesTuristicos.Models.IndexViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Turistcol</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <a href="/Home/Index" class="btn btn-secondary">Volver</a>
+    <style>
+        body {
+            background-image: url("https://www.tenjo-cundinamarca.gov.co/MiMunicipio/PublishingImages/Paginas/Sitios-de-Interes/Pe%C3%B1a%20de%20Juaica.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .overlay {
+            position: fixed; /* Usa position: fixed para que el overlay sea fijo en la ventana del navegador */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5); /* Reduce la opacidad para que no cubra completamente el contenido */
+            z-index: -1; /* Coloca la capa de fondo detrás del contenido */
+            display: flex; /* Utiliza display: flex para centrar el contenido verticalmente */
+            justify-content: center; /* Centra el contenido horizontalmente */
+            align-items: center; /* Centra el contenido verticalmente */
+        }
+
+        .container {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .table thead th {
+            background-color: #007BFF;
+            color: #FFFFFF;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            float: left;
+            background-color: #FFFFFF; /* Fondo blanco para las tarjetas */
+            padding: 15px; /* Agrega relleno a las tarjetas */
+            border-radius: 10px; /* Bordes redondeados para las tarjetas */
+        }
+
+            .card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover; /* Ajusta la imagen para cubrir todo el contenedor */
+                border-radius: 5px; /* Bordes redondeados para las imágenes */
+                margin-bottom: 10px; /* Agrega espacio entre la imagen y el texto */
+            }
+
+            .card h1 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .card .title {
+                color: grey;
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .card p {
+                margin-bottom: 5px;
+            }
+
+            .card button {
+                background-color: #007BFF;
+                color: #FFFFFF;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container mt-5">
+        <h2>Planes Turísticos </h2>
+        @if (Model.Planes != null && Model.Planes.Any())
+        {
+            @foreach (var plan in Model.Planes)
+            {
+                <div class="card">
+                    @if (plan.Imagen != null && plan.Imagen.Length > 0)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(plan.Imagen)" alt="@plan.Nombre_PlanTuristico">
+                    }
+                    else
+                    {
+                        <p>No Hay imagen disponible</p>
+                    }
+                    <h1>@plan.Nombre_PlanTuristico</h1>
+                    <p class="title">@plan.Informacion</p>
+                    <p>Precio: $@plan.Precio</p>
+                    <p><button>Ver Detalles</button></p>
+                    <form action="@Url.Action("Reservar","Inicio")" method="post">
+                        <input type="hidden" name="idPlanTuristico" value="@plan.Id_PlanTuristicos" />
+                        <input type="hidden" name="NombrePlanTuristico" value="@plan.Nombre_PlanTuristico" />
+                        <input type="hidden" name="Informacion" value="@plan.Informacion" />
+                        <input type="hidden" name="Actividades" value="@plan.Actividades" />
+                        <input type="hidden" name="Municipio" value="@plan.Municipio" />
+                        <input type="hidden" name="Imagen" value="@plan.Imagen" />
+                        <input type="hidden" name="Precio" value="@plan.Precio" />
+                        <input type="hidden" name="NombreUsuario" value="@Model.Usuarios.FirstOrDefault()?.NombreTurista" />
+                        <input type="hidden" name="CorreoUsuario" value="@Model.Usuarios.FirstOrDefault()?.Correo" />
+                        <input type="hidden" name="TelefonoUsuario" value="@Model.Usuarios.FirstOrDefault()?.Telefono" />
+                        <button type="submit" class="btn btn-primary">Reservar</button>
+                    </form>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No se encontraron planes turísticos.</p>
+        }
+
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

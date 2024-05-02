@@ -1,0 +1,66 @@
+﻿@model List<Usuario>  
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <a href="/Home3/Index3" class="btn btn-secondary">Volver</a>
+   
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .table thead th {
+            background-color: #007BFF;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Lista de Turistas</h2>
+
+        @if (Model.Count > 0)
+        {
+            <form>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Cedula</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var usuario in Model)
+                        {
+                            <tr>
+                                <td>@usuario.IdUsuario</td>
+                                <td>@usuario.NombreTurista</td>
+                                <td>@usuario.Correo</td>
+                                <td>@usuario.Cedula</td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        }
+        else
+        {
+            <p class="text-center">No se encontraron usuarios.</p>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

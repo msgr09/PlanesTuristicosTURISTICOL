@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Modulo Proveedor</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PlanesTuristicos.styles.css" asp-append-version="true" />
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    <style>
+        /* Estilo para el menú de navegación */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            font-size: 20px; /* Ajusta el tamaño de fuente */
+            color: #000000; /* Cambia el color de los enlaces a un tono más oscuro */
+            transition: color 0.3s, font-size 0.3s;
+        }
+
+            .nav-link:hover {
+                color: #000000; /* Cambia el color de los enlaces al pasar el cursor sobre ellos */
+                font-size: 20px;
+            }
+
+        /* Estilo para el encabezado */
+        header {
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 10px; /* Ajusta la distancia hacia arriba en dos píxeles */
+        }
+
+        /* Estilo para el pie de página */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px; /* Ajusta el margen superior para empujar el footer hacia abajo */
+            position: relative; /* Agrega posición relativa */
+            bottom: 0; /* Alinea el footer al fondo de la página */
+            width: 100%; /* Asegura que el footer ocupe todo el ancho */
+        }
+
+        /* Efecto de transición para los botones */
+        .btn {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .nav-item {
+            margin-right: 20px; /* Ajusta el margen entre cada elemento de navegación */
+        }
+
+        .navbar-nav {
+            margin-left: auto; /* Mueve los elementos de navegación a la derecha */
+            margin-right: auto; /* Mueve los elementos de navegación a la izquierda */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item mr-3 ml-lg-0">
+                            <a class="nav-link" asp-area="" asp-controller="Inicio" asp-action="GuardarPlan"><strong>Planes Turísticos</strong></a>
+                        </li>
+                        <li class="nav-item mx-lg-3">
+                            <a class="nav-link" asp-area="" asp-controller="Inicio" asp-action="PerfilProveedor"><strong>Mi Perfil</strong></a>
+                        </li>
+                        <li class="nav-item ml-3 mr-lg-0">
+                            <a class="nav-link" asp-area="" asp-controller="Inicio" asp-action="Salir"><strong>Salir</strong></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - TuristiCOL- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

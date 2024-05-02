@@ -1,0 +1,73 @@
+﻿@model PlanesTuristicos.Models.PlanesT;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Añadir Plan Turistico</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <a href="/Home2/Index2" class="btn btn-secondary">Volver</a>
+
+    <style>
+        body {
+            background-image: url("https://revistadiners.com.co/wp-content/uploads/2021/10/portada_viajes_cundinamarca_1200x800_2023.jpg"); /* Establece la imagen como fondo del body */
+            background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+            background-repeat: no-repeat; /* Evita la repetición de la imagen */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col.md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Añadir Plan Turistico
+                    </div>
+                    <div class="card-body">
+
+                        <form asp-controller="Inicio" asp-action="GuardarPlan" method="post">
+                            <input class="form-control mb-3" type="text" placeholder="Nombre Plan Turistico" asp-for="Nombre_PlanTuristico" required />
+                            <input class="form-control mb-3" type="text" placeholder="Ubicacion" asp-for="Municipio" required />
+                            <input class="form-control mb-3" type="text" placeholder="RUT Proveedor" asp-for="Rut" required />
+                            <input class="form-control mb-3" type="text" placeholder="Precio" asp-for="Precio" required />
+                            <input class="form-control mb-3" type="text" placeholder="Duracion" asp-for="Duracion" required />
+                            <input class="form-control mb-3" type="text" placeholder="# Actividades" asp-for="Actividades" required />
+                            
+                            <textarea class="form-control mb-3" placeholder="Información adicional" asp-for="Informacion"></textarea>
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Añadir Plan Turistico</button>
+                                <button class="btn btn-secondary" type="button" id="limpiarCampos">Limpiar Campos</button>
+                            </div>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // Limpia los campos del formulario
+        document.getElementById("limpiarCampos").addEventListener("click", function () {
+            document.getElementById("Nombre_PlanTuristico").value = "";
+            document.getElementById("Municipio").value = "";
+            document.getElementById("Rut").value = "";
+            document.getElementById("Precio").value = "";
+            document.getElementById("Duracion").value = "";
+            document.getElementById("Actividades").value = "";
+            document.getElementById("Informacion").value = "";
+            document.getElementById("Imagen").value = "";
+        });
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

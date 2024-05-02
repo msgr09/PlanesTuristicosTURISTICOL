@@ -1,0 +1,137 @@
+﻿@model PlanesTuristicos.Models.Index2ViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Turista</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("https://www.tenjo-cundinamarca.gov.co/MiMunicipio/PublishingImages/Paginas/Sitios-de-Interes/Templo%20Colonial-min.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            background: #A4AEA5;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto; /* Centramos el contenedor horizontalmente */
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0; /* Añadimos márgenes superior e inferior */
+            color: #000000;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #27A057;
+            color: #000000;
+            border-radius: 10px 10px 0 0;
+            padding: 10px 20px;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-title {
+            margin-bottom: 15px;
+        }
+
+        .card-subtitle {
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .card-info {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .reservation-card {
+            width: calc(50% - 20px);
+            margin-right: 20px;
+        }
+
+        .btn-volver {
+            margin-bottom: 20px;
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/Home/Index" class="btn btn-success btn-volver">Volver</a>
+        <h1>Perfil de Turista</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Mis Datos</strong>
+            </div>
+            <div class="card-body">
+                <p class="card-title"><strong>ID:</strong> @Model.Usuario.IdUsuario</p>
+                <p class="card-title"><strong>Nombre:</strong> @Model.Usuario.NombreTurista</p>
+                <p class="card-title"><strong>Cedula:</strong> @Model.Usuario.Cedula</p>
+                <p class="card-title"><strong>Direccion:</strong> @Model.Usuario.Direccion</p>
+                <p class="card-title"><strong>Telefono:</strong> @Model.Usuario.Telefono</p>
+                <p class="card-title"><strong>Correo:</strong> @Model.Usuario.Correo</p>
+                <a asp-area="" asp-controller="Usuario" asp-action="Edit" asp-route-id="@Model.Usuario.IdUsuario" class="btn btn-primary">Editar Perfil</a>
+                <a asp-area="" asp-controller="Usuario" asp-action="Delete" asp-route-id="@Model.Usuario.IdUsuario" class="btn btn-primary">Eliminar Mi Perfil</a>
+
+                <!-- Agrega más propiedades del usuario según sea necesario -->
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Mis Reservas</strong>
+            </div>
+            <div class="card-body d-flex flex-wrap justify-content-between">
+                @foreach (var reserva in Model.Reservas)
+                {
+                    <div class="card reservation-card">
+                        <div class="card-info">
+                            <h5 class="card-title">@reserva.NombrePlanTuristico</h5>
+                            <p class="card-subtitle"><strong>Informacion:</strong> @reserva.Informacion</p>
+                            <p class="card-subtitle"><strong>Imagen:</strong> @reserva.Imagen</p>
+                            <p class="card-subtitle"><strong>Actividades:</strong> @reserva.Actividades</p>
+                            <p class="card-subtitle"><strong>Municipio:</strong> @reserva.Municipio</p>
+                            <p class="card-subtitle"><strong>Precio:</strong> @reserva.Precio</p>
+                            <p class="card-subtitle"><strong>Fecha de reserva:</strong> @reserva.FechaReserva</p>
+                            <p class="card-subtitle"><strong>ID Plan:</strong> @reserva.IdPlanTuristico</p>
+                            <a asp-area="" asp-controller="Reservas" asp-action="Delete" asp-route-id="@reserva.IdReserva" class="btn btn-primary">Eliminar Reserva</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

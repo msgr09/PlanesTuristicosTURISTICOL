@@ -1,0 +1,128 @@
+﻿@model PlanesTuristicos.Models.PerfilProveedorViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Perfil del Proveedor</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("https://www.tenjo-cundinamarca.gov.co/MiMunicipio/PublishingImages/Paginas/Sitios-de-Interes/Templo%20Colonial-min.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            padding-top: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            background: #A4AEA5;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto; /* Centramos el contenedor horizontalmente */
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .card-header {
+            background-color: #27A057;
+            color: #000000e;
+            border-radius: 10px 10px 0 0;
+            padding: 10px 20px;
+        }
+
+        .card-body {
+            background-color: #ffffff;
+            border-radius: 0 0 10px 10px;
+            padding: 30px; /* Aumentamos el padding para dar más espacio al contenido */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .btn-volver {
+            margin-bottom: 20px;
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/Home2/Index2" class="btn btn-success btn-volver">Volver</a>
+        <h1>Perfil del Proveedor</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Mis Datos</strong>
+            </div>
+            <div class="card-body">
+                <p class="card-title"><strong>ID:</strong> @Model.Proveedor.Id_Proveedor</p>
+                <p class="card-title"><strong>Nombre:</strong> @Model.Proveedor.nombreProveedor</p>
+                <p class="card-title"><strong>Cedula:</strong> @Model.Proveedor.Cedula</p>
+                <p class="card-title"><strong>Direccion:</strong> @Model.Proveedor.direccion</p>
+                <p class="card-title"><strong>Rut:</strong> @Model.Proveedor.Rut</p>
+                <p class="card-title"><strong>Correo:</strong> @Model.Proveedor.Correo</p>
+                <a asp-area="" asp-controller="Proveedor" asp-action="Edit" asp-route-id="@Model.Proveedor.Id_Proveedor" class="btn btn-primary">Editar Perfil</a>
+                <a asp-area="" asp-controller="Proveedor" asp-action="Delete" asp-route-id="@Model.Proveedor.Id_Proveedor" class="btn btn-primary">Eliminar Perfil</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Mis Planes Turísticos</strong>
+            </div>
+            <div class="card-body">
+                @foreach (var plan in Model.PlanesTuristicos)
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            @plan.Nombre_PlanTuristico
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Municipio:</strong> @plan.Municipio</p>
+                            <p><strong>Precio:</strong> @plan.Precio</p>
+                            <p><strong>Informacion:</strong> @plan.Informacion</p>
+                            <p><strong>Duracion:</strong> @plan.Duracion</p>
+                            <p><strong>Actividades:</strong> @plan.Actividades</p>
+                            <p><strong>Imagen:</strong> @plan.Imagen</p>
+                            <a asp-area="" asp-controller="Planes" asp-action="Edit" asp-route-id="@plan.Id_PlanTuristicos" class="btn btn-primary">Editar Plan</a>
+                            <form method="post" action="@Url.Action("DeletePlanAndReserva", "Inicio")">
+                                <input type="hidden" name="idPlan" value="@plan.Id_PlanTuristicos" />
+                                <button type="submit" class="btn btn-danger">Eliminar Plan</button>
+                            </form>
+                           
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

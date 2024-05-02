@@ -1,0 +1,88 @@
+﻿@model IEnumerable<PlanesTuristicos.Models.Usuario>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado de Usuarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <a href="/Home3/Index3" class="btn btn-secondary">Volver</a>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fondo claro */
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .table {
+            background-color: #ffffff; /* Fondo blanco para la tabla */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+        th {
+            background-color: #27A057; /* Encabezado de la tabla */
+            color: #ffffff; /* Texto blanco para el encabezado */
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* Fondo gris claro para filas pares */
+        }
+
+        .table tbody tr:hover {
+            background-color: #e2e2e2; /* Cambio de color al pasar el cursor sobre una fila */
+        }
+
+        a {
+            color: #007bff; /* Color azul para los enlaces */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Listado de Usuarios</h1>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cédula</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Clave</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NombreTurista</td>
+                        <td>@item.Cedula</td>
+                        <td>@item.Direccion</td>
+                        <td>@item.Telefono</td>
+                        <td>@item.Correo</td>
+                        <td>@item.Clave</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = item.IdUsuario })">Editar</a> |
+                            <a href="@Url.Action("Details", new { id = item.IdUsuario })">Detalles</a> |
+                            <a href="@Url.Action("Delete", new { id = item.IdUsuario })">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

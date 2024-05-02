@@ -1,0 +1,87 @@
+﻿@model PlanesTuristicos.Models.Proveedor;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TuristiCOL</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-image: url("https://www.tenjo-cundinamarca.gov.co/MiMunicipio/PublishingImages/Paginas/Sitios-de-Interes/Serrania%20el%20Majuy.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000000; /* Color del texto */
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff; /* Fondo semitransparente */
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+            color: white; /* Color del texto */
+        }
+
+        .btn-primary {
+            border-radius: 10px;
+            background-color: #007bff; /* Color de fondo del botón */
+            border-color: #007bff; /* Color del borde del botón */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Cambio de color al pasar el cursor */
+            border-color: #0056b3; /* Cambio de color del borde al pasar el cursor */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Registro Proveedor
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Inicio" asp-action="Registrarse2" method="post">
+                            <input class="form-control mb-3" type="text" placeholder="Nombre Completo" asp-for="nombreProveedor" required />
+                            <input class="form-control mb-3" type="text" placeholder="Numero de Cedula" asp-for="Cedula" required />
+                            <input class="form-control mb-3" type="text" placeholder="Correo" asp-for="Correo" required />
+                            <input class="form-control mb-3" type="text" placeholder="Rut" asp-for="Rut" required />
+                            <input class="form-control mb-3" type="text" placeholder="Dirección" asp-for="direccion" required />
+                            <input class="form-control mb-3" type="password" placeholder="Contraseña" asp-for="Clave" required />
+                            <div class="d-grid gap-2 mb-3">
+                                <button class="btn btn-primary" type="submit">Registrarse</button>
+                            </div>
+                            @if (ViewData["Mensaje"] != null)
+                            {
+                                <div class="form-group">
+                                    <div class="alert alert-danger" role="alert">
+                                        @ViewData["Mensaje"]
+                                    </div>
+                                </div>
+                            }
+                            ¿Ya tienes una cuenta? <a href="@Url.Action("IniciarSesion2","Inicio")">Iniciar Sesión</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿@model List<string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IniciarSesion</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <a href="/Home/Index" class="btn btn-secondary">Volver</a>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Información Meteorológica</h1>
+    </header>
+
+   
+    <main>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var weatherData in Model)
+            {
+                var parsedData = Newtonsoft.Json.JsonConvert.DeserializeObject<WeatherData>(weatherData);
+                <h2>@parsedData.Location.Name, @parsedData.Location.Country</h2>
+
+                <table>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Valor</th>
+                    </tr>
+                    <tr>
+                        <td>Temperatura</td>
+                        <td>@parsedData.Current.Temperature</td>
+                    </tr>
+                    <tr>
+                        <td>Humedad</td>
+                        <td>@parsedData.Current.Humidity</td>
+                    </tr>
+                </table>
+            }
+        }
+        else
+        {
+            <p>No se pudo obtener información meteorológica.</p>
+        }
+    </main>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

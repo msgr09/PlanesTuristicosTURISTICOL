@@ -1,0 +1,98 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TuristiCOL</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/211/383/724/nature-landscape-national-geographic-colombia-wallpaper-preview.jpg');
+            background-size: cover;
+        }
+
+        header {
+            padding: 100px 0;
+            text-align: center;
+            color: #ECF0F1; /* Cambia el color del título */
+            position: relative;
+        }
+
+            header h1 {
+                font-size: 50px;
+                margin-bottom: 30px;
+                color: #333333; /* Cambia el color del título a un tono de gris oscuro */
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Aumenta el desplazamiento horizontal y vertical */
+            }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ECF0F1;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ECF0F1; /* Cambia el color de las opciones de navegación */
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Aumenta el desplazamiento horizontal y vertical */
+            margin-right: 20px;
+        }
+
+            .navbar-nav .nav-link:last-child {
+                margin-right: 0;
+            }
+
+        .container {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TuristiCOL</h1>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-center">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Inicio" asp-action="IniciarSesion">Turista</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Inicio" asp-action="IniciarSesion2">Proveedor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Inicio" asp-action="IniciarSesion3">Administrador</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Contenido adicional -->
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+

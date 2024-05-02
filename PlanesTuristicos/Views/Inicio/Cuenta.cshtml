@@ -1,0 +1,26 @@
+﻿@model Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cuenta de Usuario</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Cuenta de Usuario</h2>
+        <div class="card">
+            <h1>Bienvenido, @Model.NombreTurista!</h1>
+            <p>Correo Electrónico: @Model.Correo</p>
+            <!-- Agrega más detalles de la cuenta según sea necesario -->
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

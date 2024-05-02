@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reserva Exitosa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url("https://www.tenjo-cundinamarca.gov.co/MiMunicipio/PublishingImages/Paginas/Sitios-de-Interes/Pe%C3%B1a%20de%20Juaica.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .plan-details {
+            margin-bottom: 20px;
+        }
+
+            .plan-details .plan-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            .plan-details h2 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .plan-details p {
+                margin-bottom: 5px;
+            }
+
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-message">
+            <h3>¡Reserva Exitosa!</h3>
+            <p>Tu reserva del plan turístico ha sido realizada con éxito.</p>
+        </div>
+        <a href="@Url.Action("MostrarPlanes", "Inicio")" class="btn btn-primary">Volver a Planes Turísticos</a>
+    </div>
+
+    <
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
